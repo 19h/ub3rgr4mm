@@ -4,12 +4,9 @@ var config = {
 	botName: "ub3rgr4mm",
 	delimiter: "!",
 	debug: false
-}, opts = {
-	channels: ["#ub3rgr4mm"],
-	userName: "ub3rgr4mm",
-	realName: "ub3rgr4mm",
-	showErrors: true
 };
+
+opts = require("./config.js").opts;
 
 var irc = require("irc");
 
