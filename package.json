@@ -1,0 +1,34 @@
+{
+      "name": "ub3rgr4mm",
+      "version": "0.1.1",
+      "author": "Kenan Sulayman",
+      "description": "The ub3rgr4mm IRC bot.",
+      "contributors": [{
+            "name": "Kenan Sulayman",
+            "email": "kenan@sly.mn"
+      }],
+      "bin": {
+            "legify": "./ub3r.js"
+      },
+      "scripts": {
+            "start": "node ./ub3r.js"
+      },
+      "main": "./ub3r.js",
+      "repository": {
+            "type": "git",
+            "url": "https://github.com/Legify/libLegify.git"
+      },
+      "dependencies": {
+            "irc": "*",
+            "openweathermap": "*",
+            "vac": "*",
+            "stock-data-ub3rgr4mm": "*",
+            "geocoder": "*",
+            "forecast.io": "*"
+      },
+      "engines": {
+            "node": ">0.9"
+      },
+      "os": ["!win32", "darwin", "linux"],
+      "cpu": ["x64", "ia32", "!arm", "!mips"]
+}
