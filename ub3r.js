@@ -11,8 +11,8 @@ opts = require("./config.js").opts;
 var irc = require("irc");
 
 // Load logical modules
-var logic = {};
-_init = function () {
+logic = {};
+_init = function (cb) {
 	require("fs").readdirSync("./logic").forEach(function(file) {
 		(file.split(".")[1] === "js") &&
 			(logic[file.split(".")[0]] // basename
@@ -20,6 +20,8 @@ _init = function () {
 	});
 	_c_ = [];
 	for ( var _c in logic ) _c_.push("'" + _c + "'");
+
+	cb&&cb(logic);
 }
 
 _init();
@@ -40,11 +42,6 @@ bot.addListener("join", function (channel) {
 
 bot.addListener("message", function(from, to, text, message) {
 	var arg = message.args[1], _arg = arg.split(" ")[0].split("!")[1];
-
-	if ( _arg == "reinit" ) { // hot reload
-		for ( var _m in logic ) delete require.cache[logic[_m][1]];
-		return _init();
-	}
 
 	for ( var _m in logic )
 		if ( ~logic[_m][0].paths.indexOf(_arg) )
