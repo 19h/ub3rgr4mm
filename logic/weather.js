@@ -15,8 +15,15 @@ var om  = require("openweathermap"),
 exports.main = function ( from, to, text, message, arg, bot, _arg, del ) {
 	if ( _arg == "temp" ) {
 		var query = arg.split(del+_arg+" ")[1];
+
+		if ( !query ) return;
+		query = query.replace(/\W/g, '');
+		if ( !query ) return;
+
 		query = query.trim().toLowerCase();
 		query = query.charAt(0).toUpperCase() + query.slice(1);
+
+		console.log(query)
 
 		return om.find({q: query, cnt:2, units: "metric"}, function (a) {
 			a.list.length
@@ -26,6 +33,11 @@ exports.main = function ( from, to, text, message, arg, bot, _arg, del ) {
 
 	if ( _arg == "tempf" ) {
 		var query = arg.split(del+_arg+" ")[1];
+
+		if ( !query ) return;
+		query = query.replace(/\W/g, '');
+		if ( !query ) return;
+
 		query = query.trim().toLowerCase();
 		query = query.charAt(0).toUpperCase() + query.slice(1);
 
@@ -37,6 +49,11 @@ exports.main = function ( from, to, text, message, arg, bot, _arg, del ) {
 
 	if ( _arg == "tempk" ) {
 		var query = arg.split(del+_arg+" ")[1];
+
+		if ( !query ) return;
+		query = query.replace(/\W/g, '');
+		if ( !query ) return;
+
 		query = query.trim().toLowerCase();
 		query = query.charAt(0).toUpperCase() + query.slice(1);
 

@@ -41,7 +41,9 @@ bot.addListener("join", function (channel) {
 })
 
 bot.addListener("message", function(from, to, text, message) {
-	var arg = message.args[1], _arg = arg.split(" ")[0].split("!")[1];
+	var arg = message.args[1].trim(), _arg = arg.split(" ")[0].split("!")[1];
+
+	if ( !_arg || ( _arg && !_arg.trim ) ) return false;
 
 	for ( var _m in logic )
 		if ( ~logic[_m][0].paths.indexOf(_arg) )
