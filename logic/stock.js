@@ -29,7 +29,8 @@ var sd = require("stock-data-ub3rgr4mm"), _smpl = function (a) {
 };
 
 exports.main = function ( from, to, text, message, arg, bot, _arg, del ) {
-	var query = arg.split(del + _arg + " ")[1];
+	var query = arg.split(del + _arg + " ")[1] || "";
+
 	query = query.trim().toLowerCase();
 	query = query.toUpperCase();
 
