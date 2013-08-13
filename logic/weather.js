@@ -2,7 +2,8 @@ exports.paths = [
 	// Temperature
 		"temp",
 		"tempf",
-		"tempk"
+		"tempk",
+		"c4c"
 ];
 
 var om  = require("openweathermap"),
@@ -52,6 +53,21 @@ exports.main = function ( from, to, text, message, arg, bot, _arg, del ) {
 		return om.find({q:query, cnt:2}, function (a) {
 			a.list.length
 				&& bot.say(to, "It's " + a.list[0].main.temp + "°K in " + query + ".")
+		})
+	}
+
+	if ( arg.substr(0, 5) == "!c4c " ) {
+		var query = arg.split(del+_arg+" ")[1] || "";
+
+		if ( !query || !query.replace(/\W/g, '') ) return;
+
+		query = query.trim().toLowerCase();
+		query = query.charAt(0).toUpperCase() + query.slice(1);
+
+		geocode.geocode(query, function (err, v) {
+			if (!v.results[0] || err) return;
+			
+			bot.say(to, "GEOQUERY-Yield: " + query + " [" + v.results[0].geometry.location.lat + ", " + v.results[0].geometry.location.lng + "]")
 		})
 	}
 }

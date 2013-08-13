@@ -2,10 +2,10 @@ exports.paths = [
 	"reinit"
 ];
 
-var trusted = [ "apexpredator" ];
+var trusted = [ "kenansulayman.users.quakenet.org" ];
 
 exports.main = function ( from, to, text, message, arg, bot, _arg, del ) {
-	if ( trusted[from] === void 0 ) return false;
+	if ( !~trusted.indexOf(message.host) ) return false;
 
 	if ( _arg == "reinit" ) {
 		for ( var _m in logic ) delete require.cache[logic[_m][1]];
