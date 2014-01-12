@@ -5,7 +5,7 @@ exports.paths = [
 var vac = require("vac");
 
 exports.main = function ( from, to, text, message, arg, bot, del ) {
-	var v = vac.detect(arg.split(del + _arg + " ")[1], 1), z = [];
+	var v = vac.detect(arg.split(del + arg + " ")[1], 1), z = [];
 
 	for ( var a in v ) { z[0] = a; z[1] = v[a] };
 
